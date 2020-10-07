@@ -244,7 +244,7 @@
       <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  dicl2020@gmail.com</p>
     </div>
     <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white">
       <div class="w3-section">      
         <label>Name</label>
         <input class="w3-input" type="text" name="Name" required>
@@ -259,7 +259,7 @@
       </div>  
       <input class="w3-check" type="checkbox" checked name="Like">
       <label>I Like it!</label>
-      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
+      <button type="button" class="w3-button w3-right w3-theme" onclick="sendEmail()">Send</button>
       </form>
     </div>
   </div>
@@ -284,7 +284,8 @@
     <i class="fa fa-chevron-circle-up"></i></span></a>
   </div>
 </footer>
-
+<script src="https://smtpjs.com/v3/smtp.js"></script> 
+<script src="index.js"></script>
 <script>
 // Script for side navigation
 function w3_open() {
@@ -308,6 +309,21 @@ function openNav() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+
+function sendEmail() {
+	Email.send({
+		Host: "smtp.gmail.com",
+		Username : "internationaldhanlaxmi04@gmail.com",
+		Password : "Dicl@123",
+		To : "internationaldhanlaxmi04@gmail.com",
+		From : "internationaldhanlaxmi04@gmail.com",
+		Subject : "<email subject>",
+		Body : "Test Mail from website",
+	})
+	.then(function(message){
+		alert("mail sent successfully")
+	});
+	}
 </script>
 
 </body>
